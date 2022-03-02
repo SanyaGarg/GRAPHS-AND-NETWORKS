@@ -278,67 +278,67 @@ bool check_step3(int i){
     return false;
 }
 
-// //Kwartoski
-// bool check_K5(set<int> *gr,int n){
+//Kwartoski
+bool check_K5(set<int> *gr,int n){
 
-//     for(int i = 0;i<n;i++){
-//         int degree = 0;
-//         for(auto j = blocks[i].begin();j!= blocks[i].end();j++){
-//             degree+=  graph[*j].size();
-//         }
+    for(int i = 0;i<n;i++){
+        int degree = 0;
+        for(auto j = blocks[i].begin();j!= blocks[i].end();j++){
+            degree+=  graph[*j].size();
+        }
 
-//         int n = blocks[i].size();
-//         int m = degree/2;
+        int n = blocks[i].size();
+        int m = degree/2;
 
-//         if(n==5 && m==10)return true;
-//     }
-//     return false;
-// }
+        if(n==5 && m==10)return true;
+    }
+    return false;
+}
 
-// bool check_K33(set<int> *gr,int y){
-//     for(int i = 0;i<y;i++){
-//         int degree = 0;
-//         for(auto j = blocks[i].begin();j!= blocks[i].end();j++){
-//             degree+=  graph[*j].size();
-//         }
+bool check_K33(set<int> *gr,int y){
+    for(int i = 0;i<y;i++){
+        int degree = 0;
+        for(auto j = blocks[i].begin();j!= blocks[i].end();j++){
+            degree+=  graph[*j].size();
+        }
 
-//         int n = blocks[i].size();
-//         int m = degree/2;
+        int n = blocks[i].size();
+        int m = degree/2;
 
-//         if(n==6 && m==9){
-//             set<int> p1,p2;
-//             bool visited[n] = {false};
+        if(n==6 && m==9){
+            set<int> p1,p2;
+            bool visited[n] = {false};
 
-//             for(auto j = blocks[i].begin();j!= blocks[i].end();j++){
-//                 if(!visited[*j]){
-//                     p1.insert(*j);
-//                     visited[*j] = true;
+            for(auto j = blocks[i].begin();j!= blocks[i].end();j++){
+                if(!visited[*j]){
+                    p1.insert(*j);
+                    visited[*j] = true;
 
-//                     for(auto k =graph[*j].begin();k!=graph[*j].end();k++){
-//                         visited[*k] = true;
-//                         p2.insert(*k);
-//                     }
-//                 }
-//             }
-//             if(p1.size()==3 && p2.size()==3)return true;
-//         }
-//     }
-//     return false;
-// }
+                    for(auto k =graph[*j].begin();k!=graph[*j].end();k++){
+                        visited[*k] = true;
+                        p2.insert(*k);
+                    }
+                }
+            }
+            if(p1.size()==3 && p2.size()==3)return true;
+        }
+    }
+    return false;
+}
 
-// bool subgraphs(set<int> *gr,int n){
+bool subgraphs(set<int> *gr,int n){
      
-//      for(int i=0;i<n;i++){
-//         for(auto j = gr[i].begin();j!=gr[i].end();j++){
-//             delEdge(i,*j);
-//             if(check_K5(gr,n) || check_K33(gr,n))return false;
-//             subgraphs(gr,n);
-//             addEdge(i,*j);
-//         }
-//         cout << "\n";
-//     }
-//     return true;
-// }
+     for(int i=0;i<n;i++){
+        for(auto j = gr[i].begin();j!=gr[i].end();j++){
+            delEdge(i,*j);
+            if(check_K5(gr,n) || check_K33(gr,n))return false;
+            subgraphs(gr,n);
+            addEdge(i,*j);
+        }
+        cout << "\n";
+    }
+    return true;
+}
 
 int main(){
     int n = 6;
